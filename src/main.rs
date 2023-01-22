@@ -66,10 +66,36 @@ fn main() -> ! {
     ];
 
     loop {
+        for i in 0..5 {
+            for j in 0..5 {
+                // light_it_all[i][j - 1] = 0;
+                light_it_all[i][j] = 1;
+                display.show(&mut timer, light_it_all, 10);
+            }
+        }
+
+        // clear the display
+        display.clear();
+
+        light_it_all = CLEAN_BOARD;
+        // do an inverse loop
+        for i in (0..5).rev() {
+            for j in (0..5).rev() {
+                light_it_all[i][j] = 1;
+                display.show(&mut timer, light_it_all, 10);
+            }
+        }
+
+        light_it_all = CLEAN_BOARD;
+
+        /********************
+         * DISPLAY THE NAME *
+         ********************/
         display.show(&mut timer, z, 3000);
         display.show(&mut timer, o, 3000);
         display.show(&mut timer, y, 3000);
         display.show(&mut timer, a, 3000);
+        
         for i in 0..5 {
             for j in 0..5 {
                 // light_it_all[i][j - 1] = 0;
